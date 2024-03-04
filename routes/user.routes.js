@@ -10,6 +10,6 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 
 // Dashboard Endpoint (corrected)
-router.get('/dashboard', authenticateToken, userController.profile);
+router.get('/dashboard', authenticateToken, userController.dashboard);
 
 module.exports = router;
