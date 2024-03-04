@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose'); 
 const userRoutes = require('./routes/user.routes');
+const attendanceRoutes = require('./routes/attendance.routes');
 
 const port = process.env.PORT; 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -16,6 +17,7 @@ app.use(express.json()); // Handles JSON requests effectively
 app.use(bodyParser.urlencoded({extended:true}));
 // Routes
 app.use("/user", userRoutes);
+app.use("/attendance", attendanceRoutes);
 
 (async () => {
   try {

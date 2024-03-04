@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const JWT_SECRET = process.env.JWT_SECRET;
 // Signup Controller
-exports.signup = async (req, res) => {
+exports.register = async (req, res) => {
   try {    // Check if user already exists
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
@@ -13,7 +13,7 @@ exports.signup = async (req, res) => {
     // Create a new user
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new User({
-      name: req.body.name,
+      fullname: req.body.fullname,
       email: req.body.email,
       password: hashedPassword
     });
@@ -51,7 +51,7 @@ exports.login = async (req, res) => {
 exports.dashboard = async (req, res) => {
   try {
     // Fetch user information based on authenticated user id
-    const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user.userId).select('-password');
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });

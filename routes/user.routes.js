@@ -4,7 +4,7 @@ const userController = require('../controllers/user.controller');
 const { authenticateToken } = require('../utils/authMiddleware');
 
 // Signup Endpoint
-router.post('/signup', userController.signup);
+router.post('/register', userController.register);
 
 // Login Endpoint
 router.post('/login', userController.login);
