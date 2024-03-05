@@ -19,7 +19,7 @@ app.use("/user", userRoutes);
 
 (async () => {
   try {
-    await mongoose.connect(MONGODB_URI, {
+    await mongoose.connect('mongodb+srv://Chandrasura:Demi1624@cluster0.o1weh.mongodb.net/intern_db?retryWrites=true&w=majority&appName=Cluster0', {
       useNewUrlParser: true,
     });
     console.log(`Connected to MongoDB database`);
